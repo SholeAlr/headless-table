@@ -35,3 +35,10 @@ export type ProductListItem = {
   saleWithBigUnit: boolean
   includePromotion: boolean
 }
+
+export type ProductList = {
+  pageNumber: number
+  pageSize: number
+  totalCount: number
+  queryResult: ProductListItem[]
+}

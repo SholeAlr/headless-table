@@ -1,4 +1,6 @@
-export const productList = {
+import { ProductList } from '../@types/productList.mock.type'
+
+export const productList: ProductList = {
   queryResult: [
     {
       id: 102,
