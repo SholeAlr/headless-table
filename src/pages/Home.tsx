@@ -16,41 +16,48 @@ export const Home = () => {
 
   const columns = [
     productTableColumns.accessor('productName', {
-      cell: (info: { getValue: () => any }) => info.getValue(),
-      footer: (info: { column: { id: any } }) => info.column.id,
+      header: () => <span>نام محصول</span>,
+      enableColumnFilter: true,
     }),
-    productTableColumns.accessor((row: { distributerImage: string }) => row.distributerImage, {
-      id: 'distributerImage',
-      cell: (info: {
-        getValue: () =>
-          | string
-          | number
-          | boolean
-          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-          | Iterable<React.ReactNode>
-          | React.ReactPortal
-          | null
-          | undefined
-      }) => <i>{info.getValue()}</i>,
-      header: () => <span>Last Name</span>,
-      footer: (info: { column: { id: any } }) => info.column.id,
+    productTableColumns.accessor('distributerImage', {
+      header: () => <span>عکس شرکت توریع کننده</span>,
+      enableColumnFilter: true,
     }),
     productTableColumns.accessor('smallUnit', {
-      header: () => 'smallUnit',
-      cell: (info: { renderValue: () => any }) => info.renderValue(),
-      footer: (info: { column: { id: any } }) => info.column.id,
+      header: () => 'واحد فروش کوچک',
+      enableColumnFilter: true,
     }),
     productTableColumns.accessor('bigUnit', {
-      header: () => <span>Visits</span>,
-      footer: (info: { column: { id: any } }) => info.column.id,
+      header: () => <span>واحد فروش بزرگ</span>,
+      enableColumnFilter: true,
     }),
     productTableColumns.accessor('quantity', {
-      header: 'quantity',
-      footer: (info: { column: { id: any } }) => info.column.id,
+      header: 'موجودی',
+      enableColumnFilter: true,
     }),
     productTableColumns.accessor('saleWithBigUnit', {
-      header: 'saleWithBigUnit',
-      footer: (info: { column: { id: any } }) => info.column.id,
+      header: 'فروش با واحد بزرگ',
+      enableColumnFilter: true,
+    }),
+    productTableColumns.accessor('brandName', {
+      header: 'نام برند',
+      enableColumnFilter: true,
+    }),
+    productTableColumns.accessor('price', {
+      header: 'قیمت',
+      enableColumnFilter: true,
+    }),
+    productTableColumns.accessor('consumerPrice', {
+      header: 'قیمت مصرف کننده',
+      enableColumnFilter: true,
+    }),
+    productTableColumns.accessor('minOrder', {
+      header: 'کمترین تعداد سفارش',
+      enableColumnFilter: true,
+    }),
+    productTableColumns.accessor('maxOrder', {
+      header: 'بیشترین تعداد سفارش',
+      enableColumnFilter: true,
     }),
   ]
 
@@ -59,6 +66,8 @@ export const Home = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+
+  console.log({ table })
 
   return (
     <div className='p-2'>
