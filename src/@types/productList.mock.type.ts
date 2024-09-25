@@ -34,6 +34,7 @@ export type ProductListItem = {
   quantity: number
   saleWithBigUnit: boolean
   includePromotion: boolean
+  subRows?: any
 }
 
 export type ProductList = {
