@@ -181,11 +181,9 @@ export const Home = () => {
     debugColumns: false,
   })
 
-  console.log({ table })
-
   return (
-    <div className='p-2 bg-red-800'>
-      <table className='flex items-center justify-center text-center text-primary-600'>
+    <div className='w-screen overflow-x-scroll'>
+      <table className='text-center'>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -240,7 +238,8 @@ export const Home = () => {
           ))}
         </tfoot>
       </table>
-      <div className='flex items-center gap-2'>
+
+      <div className='flex items-center gap-2 text-center'>
         <button
           className='border rounded p-1'
           onClick={() => table.setPageIndex(0)}
@@ -276,7 +275,7 @@ export const Home = () => {
           </strong>
         </span>
         <span className='flex items-center gap-1'>
-          | Go to page:
+          | برو به صفحه:
           <input
             type='number'
             min='1'
@@ -297,19 +296,21 @@ export const Home = () => {
         >
           {[10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+              {pageSize}
             </option>
           ))}
         </select>
       </div>
-      <div>{table.getPrePaginationRowModel().rows.length} Rows</div>
-      <div>
-        <button onClick={() => rerender()}>Force Rerender</button>
+      <div className='flex justify-between'>
+        <div>{table.getPrePaginationRowModel().rows.length} ردیف</div>
+        <div>
+          <button onClick={() => rerender()}>بازنشانی</button>
+        </div>
+        <div>
+          <button onClick={() => refreshData()}>رفرش</button>
+        </div>
+        <pre>{JSON.stringify({ columnFilters: table.getState().columnFilters }, null, 2)}</pre>
       </div>
-      <div>
-        <button onClick={() => refreshData()}>Refresh Data</button>
-      </div>
-      <pre>{JSON.stringify({ columnFilters: table.getState().columnFilters }, null, 2)}</pre>
     </div>
   )
 }
