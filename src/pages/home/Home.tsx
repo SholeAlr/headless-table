@@ -170,14 +170,14 @@ export const Home = () => {
         <div>
           <button onClick={() => refreshData()}>رفرش</button>
         </div>
-        <pre>
-          {JSON.stringify(
-            { columnFilters: table.getState().columnFilters },
-            null,
-            2,
-          )}
-        </pre>
       </div>
+      <pre>
+        {JSON.stringify(
+          { columnFilters: table.getState().columnFilters },
+          null,
+          2,
+        )}
+      </pre>
     </div>
   )
 }
