@@ -2,19 +2,13 @@ import {
   ColumnDef,
   ColumnFiltersState,
   createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
   RowData,
-  useReactTable,
-  FilterFn,
 } from '@tanstack/react-table'
 import { useMemo, useReducer, useState } from 'react'
 import { ProductListItem } from '../@types/productList.mock.type'
 import { productList } from '../mock/productList'
-import Filter from '../components/Filter'
+import { Table } from '../components/Table'
+import { useCreateTable } from '../hooks/useCreateTable'
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -31,7 +25,6 @@ export const Home = () => {
   const productTableColumns = createColumnHelper<ProductListItem>()
 
   const newProduct = (): ProductListItem => {
-    // Implement the logic to create a new person object
     return {
       id: 0,
       productName: '',
@@ -164,81 +157,16 @@ export const Home = () => {
     [],
   )
 
-  const table = useReactTable({
+  const table = useCreateTable({
     data,
     columns,
-    filterFns: {},
-    state: {
-      columnFilters,
-    },
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(), //client side filtering
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
+    columnFilters,
+    setColumnFilters,
   })
 
   return (
     <div className='w-screen overflow-x-scroll'>
-      <table className='text-center'>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id} colSpan={header.colSpan}>
-                  {header.isPlaceholder ? null : (
-                    <>
-                      <div
-                        {...{
-                          className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-                          onClick: header.column.getToggleSortingHandler(),
-                        }}
-                      >
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                        {{
-                          asc: ' 🔼',
-                          desc: ' 🔽',
-                        }[header.column.getIsSorted() as string] ?? null}
-                      </div>
-                      {header.column.getCanFilter() ? (
-                        <div>
-                          <Filter column={header.column} />
-                        </div>
-                      ) : null}
-                    </>
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(header.column.columnDef.footer, header.getContext())}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
-      </table>
-
+      <Table table={table} />
       <div className='flex items-center gap-2 text-center'>
         <button
           className='border rounded p-1'
@@ -271,7 +199,8 @@ export const Home = () => {
         <span className='flex items-center gap-1'>
           <div>Page</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            {table.getState().pagination.pageIndex + 1} of{' '}
+            {table.getPageCount()}
           </strong>
         </span>
         <span className='flex items-center gap-1'>
@@ -309,7 +238,13 @@ export const Home = () => {
         <div>
           <button onClick={() => refreshData()}>رفرش</button>
         </div>
-        <pre>{JSON.stringify({ columnFilters: table.getState().columnFilters }, null, 2)}</pre>
+        <pre>
+          {JSON.stringify(
+            { columnFilters: table.getState().columnFilters },
+            null,
+            2,
+          )}
+        </pre>
       </div>
     </div>
   )
