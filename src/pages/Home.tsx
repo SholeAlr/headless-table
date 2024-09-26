@@ -103,7 +103,7 @@ export const Home = () => {
         },
       },
       productTableColumns.accessor('distributerImage', {
-        header: () => <span>عکس شرکت توریع کننده</span>,
+        header: () => <span>عکس شرکت توزیع کننده</span>,
         enableColumnFilter: true,
       }),
       productTableColumns.accessor('smallUnit', {
@@ -184,8 +184,8 @@ export const Home = () => {
   console.log({ table })
 
   return (
-    <div className='p-2'>
-      <table>
+    <div className='p-2 bg-red-800'>
+      <table className='flex items-center justify-center text-center text-primary-600'>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
