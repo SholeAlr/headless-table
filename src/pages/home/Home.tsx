@@ -5,10 +5,11 @@ import {
   RowData,
 } from '@tanstack/react-table'
 import { useMemo, useReducer, useState } from 'react'
-import { ProductListItem } from '../@types/productList.mock.type'
-import { productList } from '../mock/productList'
-import { Table } from '../components/Table'
-import { useCreateTable } from '../hooks/useCreateTable'
+import { ProductListItem } from '../../@types/productList.mock.type'
+import { productList } from '../../mock/productList'
+import { Table } from '../../components/Table'
+import { useCreateTable } from '../../hooks/useCreateTable'
+import { useCreateProductTableColumns } from './hooks/useCreateProductTable'
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -86,76 +87,7 @@ export const Home = () => {
     return makeDataLevel()
   }
 
-  const columns = useMemo<ColumnDef<ProductListItem, any>[]>(
-    () => [
-      {
-        accessorKey: 'productName',
-        header: () => <span>نام محصول</span>,
-        meta: {
-          filterVariant: 'text',
-        },
-      },
-      productTableColumns.accessor('distributerImage', {
-        header: () => <span>عکس شرکت توزیع کننده</span>,
-        enableColumnFilter: true,
-      }),
-      productTableColumns.accessor('smallUnit', {
-        header: () => 'واحد فروش کوچک',
-        meta: {
-          filterVariant: 'select',
-        },
-      }),
-      productTableColumns.accessor('bigUnit', {
-        header: () => <span>واحد فروش بزرگ</span>,
-        meta: {
-          filterVariant: 'select',
-        },
-      }),
-      productTableColumns.accessor('quantity', {
-        header: 'موجودی',
-        meta: {
-          filterVariant: 'range',
-        },
-      }),
-      productTableColumns.accessor('saleWithBigUnit', {
-        header: 'فروش با واحد بزرگ',
-        meta: {
-          filterVariant: 'checkbox',
-        },
-      }),
-      productTableColumns.accessor('brandName', {
-        header: 'نام برند',
-        meta: {
-          filterVariant: 'multi-select',
-        },
-      }),
-      productTableColumns.accessor('price', {
-        header: 'قیمت',
-        meta: {
-          filterVariant: 'range',
-        },
-      }),
-      productTableColumns.accessor('consumerPrice', {
-        header: 'قیمت مصرف کننده',
-        meta: {
-          filterVariant: 'range',
-        },
-      }),
-      productTableColumns.accessor('minOrder', {
-        header: 'کمترین تعداد سفارش',
-        meta: {
-          filterVariant: 'range',
-        },
-      }),
-      productTableColumns.accessor('maxOrder', {
-        header: 'بیشترین تعداد سفارش',
-        meta: {
-          filterVariant: 'range',
-        },
-      }),
-    ],
-    [],
-  )
+  const columns = useCreateProductTableColumns()
 
   const table = useCreateTable({
     data,
