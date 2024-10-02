@@ -54,10 +54,16 @@ export const Table = ({ table }: TableProps) => {
         ))}
       </thead>
       <tbody>
-        {table.getRowModel().rows.map((row: any) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell: any) => (
-              <td key={cell.id}>
+        {table.getRowModel().rows.map((row: any, index: number) => (
+          <tr
+            key={row.id}
+            className={clsx(
+              'border odd:bg-white ',
+              index % 2 === 0 ? '' : 'bg-gray-100',
+            )}
+          >
+            {row.getVisibleCells().map((cell: any, index: number) => (
+              <td key={cell.id} className='border text-nowrap p-4'>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
