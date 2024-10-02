@@ -6,6 +6,7 @@ import { useCreateTable } from '../../hooks/useCreateTable'
 import { useCreateProductTableColumns } from './hooks/useCreateProductTable'
 import { Pagination } from '../../components/Pagination'
 import { ActionButtons } from '../../components/ActionButtons'
+import { SelectedFilters } from '../../components/SelectedFilters'
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -36,13 +37,7 @@ export const Home = () => {
 
       <ActionButtons table={table} setData={setData} />
 
-      <pre>
-        {JSON.stringify(
-          { columnFilters: table.getState().columnFilters },
-          null,
-          2,
-        )}
-      </pre>
+      <SelectedFilters table={table} />
     </div>
   )
 }
