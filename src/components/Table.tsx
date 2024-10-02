@@ -2,22 +2,31 @@ import { flexRender } from '@tanstack/react-table'
 import React from 'react'
 import Filter from './Filter'
 import { TableProps } from './@types/table'
+import { ArrowDown3, ArrowUp3, Sort } from 'iconsax-react'
+import clsx from 'clsx'
 
 export const Table = ({ table }: TableProps) => {
   return (
     <table className='text-center'>
-      <thead>
+      <thead className='bg-gray-800 text-white'>
         {table.getHeaderGroups().map((headerGroup: any) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header: any) => (
-              <th key={header.id} colSpan={header.colSpan}>
+              <th
+                key={header.id}
+                colSpan={header.colSpan}
+                className='border w-fit text-nowrap p-2'
+              >
                 {header.isPlaceholder ? null : (
                   <>
                     <div
-                      {...{
-                        className: header.column.getCanSort()
+                      className={clsx(
+                        'flex justify-between gap-x-4 mb-2',
+                        header.column.getCanSort()
                           ? 'cursor-pointer select-none'
                           : '',
+                      )}
+                      {...{
                         onClick: header.column.getToggleSortingHandler(),
                       }}
                     >
@@ -26,9 +35,11 @@ export const Table = ({ table }: TableProps) => {
                         header.getContext(),
                       )}
                       {{
-                        asc: ' 🔼',
-                        desc: ' 🔽',
-                      }[header.column.getIsSorted() as string] ?? null}
+                        asc: <ArrowUp3 className='text-white' />,
+                        desc: <ArrowDown3 className='text-white' />,
+                      }[header.column.getIsSorted() as string] ?? (
+                        <Sort className='text-white' />
+                      )}
                     </div>
                     {header.column.getCanFilter() ? (
                       <div>

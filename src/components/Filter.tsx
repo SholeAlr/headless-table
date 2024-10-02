@@ -13,15 +13,19 @@ function Filter({ column }: { column: Column<any, unknown> }) {
         <DebouncedInput
           type='number'
           value={(columnFilterValue as [number, number])?.[0] ?? ''}
-          onChange={(value) => column.setFilterValue((old: [number, number]) => [value, old?.[1]])}
-          placeholder={`Min`}
+          onChange={(value) =>
+            column.setFilterValue((old: [number, number]) => [value, old?.[1]])
+          }
+          placeholder='کمترین'
           className='w-24 border shadow rounded'
         />
         <DebouncedInput
           type='number'
           value={(columnFilterValue as [number, number])?.[1] ?? ''}
-          onChange={(value) => column.setFilterValue((old: [number, number]) => [old?.[0], value])}
-          placeholder={`Max`}
+          onChange={(value) =>
+            column.setFilterValue((old: [number, number]) => [old?.[0], value])
+          }
+          placeholder='بیشترین'
           className='w-24 border shadow rounded'
         />
       </div>
@@ -38,7 +42,10 @@ function Filter({ column }: { column: Column<any, unknown> }) {
       <option value='opt2'>opt2</option>
     </select>
   ) : filterVariant === 'checkbox' ? (
-    <input type='checkbox' onChange={(e) => column.setFilterValue(e.target.value)} />
+    <input
+      type='checkbox'
+      onChange={(e) => column.setFilterValue(e.target.value)}
+    />
   ) : (
     <DebouncedInput
       className='w-36 border shadow rounded'
