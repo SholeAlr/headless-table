@@ -34,7 +34,7 @@ export const Pagination = ({ table }: any) => {
       <span className='flex items-center gap-1'>
         <div>صفحه</div>
         <strong>
-          {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+          {table.getState().pagination.pageIndex + 1} از {table.getPageCount()}
         </strong>
       </span>
       <span className='flex items-center gap-1'>

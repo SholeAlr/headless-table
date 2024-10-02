@@ -62,7 +62,7 @@ export const Table = ({ table }: TableProps) => {
               index % 2 === 0 ? '' : 'bg-gray-100',
             )}
           >
-            {row.getVisibleCells().map((cell: any, index: number) => (
+            {row.getVisibleCells().map((cell: any) => (
               <td key={cell.id} className='border text-nowrap p-4'>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>

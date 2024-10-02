@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { productList } from '../../mock/productList'
 import { Table } from '../../components/Table'
 import { useCreateTable } from '../../hooks/useCreateTable'
-import { useCreateProductTableColumns } from './hooks/useCreateProductTable'
+import { ProductTableColumns } from './hooks/ProductTableColumns'
 import { Pagination } from '../../components/Pagination'
 import { ActionButtons } from '../../components/ActionButtons'
 import { SelectedFilters } from '../../components/SelectedFilters'
@@ -20,7 +20,7 @@ export const Home = () => {
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
-  const columns = useCreateProductTableColumns()
+  const columns = ProductTableColumns()
 
   const table = useCreateTable({
     data,

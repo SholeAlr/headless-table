@@ -1,10 +1,33 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { ProductListItem } from '../../../@types/productList.mock.type'
+import { IndeterminateCheckbox } from '../../../components/IndeterminateCheckbox'
 
-export const useCreateProductTableColumns = () => {
-  const columns = useMemo<ColumnDef<ProductListItem, any>[]>(
+export const ProductTableColumns = () => {
+  const columns = useMemo<ColumnDef<ProductListItem>[]>(
     () => [
+      {
+        id: 'select',
+        header: ({ table }) => (
+          <IndeterminateCheckbox
+            {...{
+              checked: table.getIsAllRowsSelected(),
+              indeterminate: table.getIsSomeRowsSelected(),
+              onChange: table.getToggleAllRowsSelectedHandler(),
+            }}
+          />
+        ),
+        cell: ({ row }) => (
+          <IndeterminateCheckbox
+            {...{
+              checked: row.getIsSelected(),
+              disabled: !row.getCanSelect(),
+              indeterminate: row.getIsSomeSelected(),
+              onChange: row.getToggleSelectedHandler(),
+            }}
+          />
+        ),
+      },
       {
         accessorKey: 'productName',
         header: () => 'نام محصول',
