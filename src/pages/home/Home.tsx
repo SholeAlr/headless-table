@@ -7,6 +7,7 @@ import { ProductTableColumns } from './hooks/ProductTableColumns'
 import { Pagination } from '../../components/Pagination'
 import { ActionButtons } from '../../components/ActionButtons'
 import { SelectedFilters } from '../../components/SelectedFilters'
+import { ExportButtons } from '../../components/ExportButtons'
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -31,6 +32,8 @@ export const Home = () => {
 
   return (
     <div className='w-screen overflow-x-scroll'>
+      <ExportButtons table={table} />
+
       <Table table={table} />
 
       <Pagination table={table} />

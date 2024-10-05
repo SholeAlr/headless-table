@@ -1,26 +1,12 @@
 import { flexRender } from '@tanstack/react-table'
-import React from 'react'
 import Filter from './Filter'
 import { TableProps } from './@types/table'
-import { ArrowDown3, ArrowUp3, DocumentDownload, Sort } from 'iconsax-react'
+import { ArrowDown3, ArrowUp3, Sort } from 'iconsax-react'
 import clsx from 'clsx'
-import { download, generateCsv, mkConfig } from 'export-to-csv'
-import { exportToCsv } from '../helpers/exportToCSV'
 
 export const Table = ({ table }: TableProps) => {
-  const exportToCsvClick = () => {
-    exportToCsv({ table })
-  }
-
   return (
     <>
-      <button
-        onClick={exportToCsvClick}
-        className='bg-blue-600 text-white p-2 rounded-lg m-2 flex gap-x-2'
-      >
-        <DocumentDownload className='text-white' />
-        CSV
-      </button>
       <table className='text-center'>
         <thead className='bg-gray-800 text-white'>
           {table.getHeaderGroups().map((headerGroup: any) => (
