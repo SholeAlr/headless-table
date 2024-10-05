@@ -2,7 +2,13 @@ import React from 'react'
 import DebouncedInput from './DebouncedInput'
 import { Column } from '@tanstack/react-table'
 
-function Filter({ column }: { column: Column<any, unknown> }) {
+function Filter({
+  column,
+  Units,
+}: {
+  column: Column<any, unknown>
+  Units: any
+}) {
   const columnFilterValue = column.getFilterValue()
   const { filterVariant } = column.columnDef.meta ?? {}
 
@@ -38,9 +44,9 @@ function Filter({ column }: { column: Column<any, unknown> }) {
       className='text-black rounded-sm'
     >
       <option value=''>All</option>
-      <option value='opt1'>opt1</option>
-      <option value='opt2'>opt2</option>
-      <option value='opt2'>opt2</option>
+      {Units.map((unit: any) => (
+        <option value={unit}>{unit}</option>
+      ))}
     </select>
   ) : filterVariant === 'checkbox' ? (
     <input
@@ -55,7 +61,6 @@ function Filter({ column }: { column: Column<any, unknown> }) {
       type='text'
       value={(columnFilterValue ?? '') as string}
     />
-    // See faceted column filters example for datalist search suggestions
   )
 }
 

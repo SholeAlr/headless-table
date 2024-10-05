@@ -5,6 +5,10 @@ import { ArrowDown3, ArrowUp3, Sort } from 'iconsax-react'
 import clsx from 'clsx'
 
 export const Table = ({ table }: TableProps) => {
+  const Units = ['گالن', 'کیلوگرم', 'عدد', 'بطری']
+
+  console.log(table)
+
   return (
     <table className='text-center'>
       <thead className='bg-gray-800 text-white'>
@@ -42,7 +46,7 @@ export const Table = ({ table }: TableProps) => {
                     </div>
                     {header.column.getCanFilter() ? (
                       <div>
-                        <Filter column={header.column} />
+                        <Filter column={header.column} Units={Units} />
                       </div>
                     ) : null}
                   </>
