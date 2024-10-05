@@ -35,6 +35,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
     <select
       onChange={(e) => column.setFilterValue(e.target.value)}
       value={columnFilterValue?.toString()}
+      className='text-black rounded-sm'
     >
       <option value=''>All</option>
       <option value='opt1'>opt1</option>
@@ -48,7 +49,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
     />
   ) : (
     <DebouncedInput
-      className='w-36 border shadow rounded'
+      className='w-36 border shadow rounded outline-none text-black px-2'
       onChange={(value) => column.setFilterValue(value)}
       placeholder='جستجو...'
       type='text'
