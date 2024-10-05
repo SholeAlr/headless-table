@@ -12,6 +12,10 @@ export const useCreateTable = ({
   columns,
   columnFilters,
   setColumnFilters,
+  debugTable,
+  debugHeaders,
+  debugColumns,
+  columnResizeMode,
 }: UseCreateTableProps) => {
   const table = useReactTable({
     data,
@@ -25,9 +29,10 @@ export const useCreateTable = ({
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
+    debugTable: debugTable,
+    debugHeaders: debugHeaders,
+    debugColumns: debugColumns,
+    columnResizeMode: columnResizeMode,
   })
 
   return table

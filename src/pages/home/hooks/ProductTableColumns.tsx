@@ -34,6 +34,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'text',
         },
+        size: 180,
       },
       {
         accessorKey: 'distributerImage',
@@ -46,6 +47,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'select',
         },
+        size: 180,
       },
       {
         accessorKey: 'bigUnit',
@@ -53,6 +55,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'select',
         },
+        size: 180,
       },
       {
         accessorKey: 'quantity',
@@ -60,6 +63,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'range',
         },
+        size: 180,
       },
       {
         accessorKey: 'saleWithBigUnit',
@@ -67,6 +71,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'checkbox',
         },
+        size: 180,
       },
       {
         accessorKey: 'brandName',
@@ -74,6 +79,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'multi-select',
         },
+        size: 180,
       },
       {
         accessorKey: 'price',
@@ -81,6 +87,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'range',
         },
+        size: 180,
       },
       {
         accessorKey: 'consumerPrice',
@@ -88,6 +95,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'range',
         },
+        size: 180,
       },
       {
         accessorKey: 'minOrder',
@@ -95,6 +103,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'range',
         },
+        size: 180,
       },
       {
         accessorKey: 'maxOrder',
@@ -102,6 +111,7 @@ export const ProductTableColumns = () => {
         meta: {
           filterVariant: 'range',
         },
+        size: 180,
       },
     ],
     [],

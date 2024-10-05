@@ -1,4 +1,8 @@
-import { ColumnFiltersState, RowData } from '@tanstack/react-table'
+import {
+  ColumnFiltersState,
+  getCoreRowModel,
+  RowData,
+} from '@tanstack/react-table'
 import { useState } from 'react'
 import { productList } from '../../mock/productList'
 import { Table } from '../../components/Table'
@@ -8,6 +12,8 @@ import { Pagination } from '../../components/Pagination'
 import { ActionButtons } from '../../components/ActionButtons'
 import { SelectedFilters } from '../../components/SelectedFilters'
 import { ExportButtons } from '../../components/ExportButtons'
+import '../../main.css'
+import { ColumnVisibility } from '../../components/ColumnVisibility'
 
 declare module '@tanstack/react-table' {
   //allows us to define custom properties for our columns
@@ -21,18 +27,26 @@ export const Home = () => {
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
-  const columns = ProductTableColumns()
+  const productTablecolumns = ProductTableColumns()
+
+  const [columns] = useState(() => [...productTablecolumns])
 
   const table = useCreateTable({
     data,
     columns,
     columnFilters,
     setColumnFilters,
+    debugTable: true,
+    debugHeaders: true,
+    debugColumns: true,
+    columnResizeMode: 'onChange',
   })
 
   return (
     <div className='w-screen overflow-x-scroll'>
       <ExportButtons table={table} />
+
+      <ColumnVisibility table={table} />
 
       <Table table={table} />
 
