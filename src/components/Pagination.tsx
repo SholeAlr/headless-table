@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Pagination = ({ table }: any) => {
   return (
     <div className='flex flex-col sm:flex-row gap-2 text-center'>
@@ -48,12 +46,12 @@ export const Pagination = ({ table }: any) => {
             type='number'
             min='1'
             max={table.getPageCount()}
-            defaultValue={table.getState().pagination.pageIndex + 1}
+            value={table.getState().pagination.pageIndex + 1}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0
               table.setPageIndex(page)
             }}
-            className='border p-1 rounded w-8'
+            className='border p-1 rounded w-10'
           />
         </span>
         <select
