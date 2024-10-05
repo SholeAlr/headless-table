@@ -1,14 +1,14 @@
 import { DocumentDownload } from 'iconsax-react'
-import React from 'react'
 import { exportToCsv } from '../helpers/exportToCSV'
+import { exportToExcel } from '../helpers/exportToExcel'
 
 export const ExportButtons = ({ table }: any) => {
   const exportToCsvClick = () => {
     exportToCsv({ table })
   }
 
-  const exportToExcelClick = () => {
-    console.log('clicked')
+  const exportToExcelClick = async () => {
+    exportToExcel({ table })
   }
   return (
     <div className='flex'>
