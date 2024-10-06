@@ -61,36 +61,53 @@ export const Table = ({ table }: TableProps) => {
                               ? 'cursor-pointer select-none'
                               : '',
                           )}
-                          {...{
-                            onClick: header.column.getToggleSortingHandler(),
-                          }}
                         >
                           {flexRender(
                             header.column.columnDef.header,
                             header.getContext(),
                           )}
                           {{
-                            asc: <ArrowUp3 className='text-white' />,
-                            desc: <ArrowDown3 className='text-white' />,
+                            asc: (
+                              <ArrowUp3
+                                className='text-white'
+                                {...{
+                                  onClick:
+                                    header.column.getToggleSortingHandler(),
+                                }}
+                              />
+                            ),
+                            desc: (
+                              <ArrowDown3
+                                className='text-white'
+                                {...{
+                                  onClick:
+                                    header.column.getToggleSortingHandler(),
+                                }}
+                              />
+                            ),
                           }[header.column.getIsSorted() as string] ?? (
-                            <Sort className='text-white' />
+                            <Sort
+                              className='text-white'
+                              {...{
+                                onClick:
+                                  header.column.getToggleSortingHandler(),
+                              }}
+                            />
                           )}
+                          <div
+                            {...{
+                              onDoubleClick: () => header.column.resetSize(),
+                              onMouseDown: header.getResizeHandler(),
+                              onTouchStart: header.getResizeHandler(),
+                              className: 'resizer',
+                            }}
+                          />
                         </div>
                         {header.column.getCanFilter() ? (
                           <div>
                             <Filter column={header.column} Units={Units} />
                           </div>
                         ) : null}
-                        <div
-                          {...{
-                            onDoubleClick: () => header.column.resetSize(),
-                            onMouseDown: header.getResizeHandler(),
-                            onTouchStart: header.getResizeHandler(),
-                            className: `resizer ${
-                              header.column.getIsResizing() ? 'isResizing' : ''
-                            }`,
-                          }}
-                        />
                       </>
                     )}
                   </th>

@@ -9,4 +9,5 @@ export type UseCreateTableProps = {
   debugHeaders: boolean
   debugColumns: boolean
   columnResizeMode: ColumnResizeMode | undefined
+  columnResizeDirection?: 'ltr' | 'rtl'
 }

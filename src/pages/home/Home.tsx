@@ -1,8 +1,4 @@
-import {
-  ColumnFiltersState,
-  getCoreRowModel,
-  RowData,
-} from '@tanstack/react-table'
+import { ColumnFiltersState, RowData } from '@tanstack/react-table'
 import { useState } from 'react'
 import { productList } from '../../mock/productList'
 import { Table } from '../../components/Table'
@@ -40,6 +36,7 @@ export const Home = () => {
     debugHeaders: true,
     debugColumns: true,
     columnResizeMode: 'onChange',
+    columnResizeDirection: 'rtl',
   })
 
   return (

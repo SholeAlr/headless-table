@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { ArrowDown2 } from 'iconsax-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IconElement } from './IconElemnt'
 
 export const ColumnVisibility = ({ table }: any) => {

@@ -16,6 +16,7 @@ export const useCreateTable = ({
   debugHeaders,
   debugColumns,
   columnResizeMode,
+  columnResizeDirection,
 }: UseCreateTableProps) => {
   const table = useReactTable({
     data,
@@ -33,6 +34,7 @@ export const useCreateTable = ({
     debugHeaders: debugHeaders,
     debugColumns: debugColumns,
     columnResizeMode: columnResizeMode,
+    columnResizeDirection: columnResizeDirection,
   })
 
   return table
