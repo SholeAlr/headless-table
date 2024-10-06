@@ -30,7 +30,7 @@ export const ProductTableColumns = () => {
       },
       {
         accessorKey: 'productName',
-        header: () => 'نام محصول',
+        header: 'نام محصول',
         meta: {
           filterVariant: 'text',
         },
@@ -38,12 +38,12 @@ export const ProductTableColumns = () => {
       },
       {
         accessorKey: 'distributerImage',
-        header: () => 'عکس شرکت توزیع کننده',
+        header: 'عکس شرکت توزیع کننده',
         enableColumnFilter: true,
       },
       {
         accessorKey: 'smallUnit',
-        header: () => 'واحد فروش کوچک',
+        header: 'واحد فروش کوچک',
         meta: {
           filterVariant: 'select',
         },
@@ -51,7 +51,7 @@ export const ProductTableColumns = () => {
       },
       {
         accessorKey: 'bigUnit',
-        header: () => 'واحد فروش بزرگ',
+        header: 'واحد فروش بزرگ',
         meta: {
           filterVariant: 'select',
         },

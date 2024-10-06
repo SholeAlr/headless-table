@@ -15,22 +15,25 @@ export const ColumnVisibility = ({ table }: any) => {
           Toggle All
         </label>
       </div>
-      {table.getAllLeafColumns().map((column: any) => {
-        return (
-          <div key={column.id} className='px-1'>
-            <label>
-              <input
-                {...{
-                  type: 'checkbox',
-                  checked: column.getIsVisible(),
-                  onChange: column.getToggleVisibilityHandler(),
-                }}
-              />{' '}
-              {column.id}
-            </label>
-          </div>
-        )
-      })}
+      {table
+        .getAllLeafColumns()
+        .slice(1, table.getAllLeafColumns().length)
+        .map((column: any) => {
+          return (
+            <div key={column.id} className='px-1'>
+              <label>
+                <input
+                  {...{
+                    type: 'checkbox',
+                    checked: column.getIsVisible(),
+                    onChange: column.getToggleVisibilityHandler(),
+                  }}
+                />{' '}
+                {column.columnDef.header}
+              </label>
+            </div>
+          )
+        })}
     </div>
   )
 }
