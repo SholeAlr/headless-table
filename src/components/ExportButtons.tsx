@@ -6,10 +6,11 @@ import { ExportButtonsProps } from './@types/export.buttons.type'
 
 export const ExportButtons: FC<ExportButtonsProps> = ({
   table,
+  columns,
   neededButtons = 'all',
 }) => {
   const exportToCsvClick = () => {
-    exportToCsv({ table })
+    exportToCsv({ table, columns })
   }
 
   const exportToExcelClick = async () => {

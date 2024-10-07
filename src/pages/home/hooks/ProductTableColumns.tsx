@@ -29,6 +29,7 @@ export const ProductTableColumns = () => {
         ),
       },
       {
+        id: 'productName',
         accessorKey: 'productName',
         header: 'نام محصول',
         meta: {
@@ -37,11 +38,13 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'distributerImage',
         accessorKey: 'distributerImage',
         header: 'عکس شرکت توزیع کننده',
         enableColumnFilter: true,
       },
       {
+        id: 'smallUnit',
         accessorKey: 'smallUnit',
         header: 'واحد فروش کوچک',
         meta: {
@@ -50,6 +53,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'bigUnit',
         accessorKey: 'bigUnit',
         header: 'واحد فروش بزرگ',
         meta: {
@@ -58,6 +62,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'quantity',
         accessorKey: 'quantity',
         header: 'موجودی',
         meta: {
@@ -66,6 +71,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'saleWithBigUnit',
         accessorKey: 'saleWithBigUnit',
         header: 'فروش با واحد بزرگ',
         meta: {
@@ -74,6 +80,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'brandName',
         accessorKey: 'brandName',
         header: 'نام برند',
         meta: {
@@ -82,6 +89,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'price',
         accessorKey: 'price',
         header: 'قیمت',
         meta: {
@@ -90,6 +98,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'consumerPrice',
         accessorKey: 'consumerPrice',
         header: 'قیمت مصرف کننده',
         meta: {
@@ -98,6 +107,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'minOrder',
         accessorKey: 'minOrder',
         header: 'کمترین تعداد سفارش',
         meta: {
@@ -106,6 +116,7 @@ export const ProductTableColumns = () => {
         size: 180,
       },
       {
+        id: 'maxOrder',
         accessorKey: 'maxOrder',
         header: 'بیشترین تعداد سفارش',
         meta: {

@@ -41,7 +41,7 @@ export const Home = () => {
 
   return (
     <div className='w-screen overflow-x-scroll'>
-      <ExportButtons table={table} />
+      <ExportButtons table={table} columns={columns} />
 
       <ColumnVisibility table={table} />
 
