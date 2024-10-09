@@ -2,6 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { ProductListItem } from '../../../@types/productList.mock.type'
 import { IndeterminateCheckbox } from '../../../components/IndeterminateCheckbox'
+import { Edit } from 'iconsax-react'
 
 export const ProductTableColumns = () => {
   const columns = useMemo<ColumnDef<ProductListItem>[]>(
@@ -18,14 +19,17 @@ export const ProductTableColumns = () => {
           />
         ),
         cell: ({ row }) => (
-          <IndeterminateCheckbox
-            {...{
-              checked: row.getIsSelected(),
-              disabled: !row.getCanSelect(),
-              indeterminate: row.getIsSomeSelected(),
-              onChange: row.getToggleSelectedHandler(),
-            }}
-          />
+          <div className='flex gap-x-2'>
+            <IndeterminateCheckbox
+              {...{
+                checked: row.getIsSelected(),
+                disabled: !row.getCanSelect(),
+                indeterminate: row.getIsSomeSelected(),
+                onChange: row.getToggleSelectedHandler(),
+              }}
+            />
+            <Edit className='text-blue-600 size-5' />
+          </div>
         ),
       },
       {
