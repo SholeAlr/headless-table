@@ -10,21 +10,22 @@ import { UseCreateTableProps } from '../@types/hooks.type'
 export const useCreateTable = ({
   data,
   columns,
-  columnFilters,
   setColumnFilters,
   debugTable,
   debugHeaders,
   debugColumns,
   columnResizeMode,
   columnResizeDirection,
+  filterFns,
+  state,
+  globalFilterFn,
 }: UseCreateTableProps) => {
   const table = useReactTable({
     data,
     columns,
-    filterFns: {},
-    state: {
-      columnFilters,
-    },
+    filterFns,
+    state,
+    globalFilterFn,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),

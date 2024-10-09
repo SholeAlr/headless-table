@@ -10,4 +10,18 @@ export type UseCreateTableProps = {
   debugColumns: boolean
   columnResizeMode: ColumnResizeMode | undefined
   columnResizeDirection?: 'ltr' | 'rtl'
+  filterFns: {
+    fuzzy: any
+  }
+  state: {
+    columnFilters: any
+    globalFilter: any
+  }
+  globalFilterFn: any
+  onColumnFiltersChange: any
+  onGlobalFilterChange: any
+  getCoreRowModel: any
+  getFilteredRowModel: any
+  getSortedRowModel: any
+  getPaginationRowModel: any
 }
