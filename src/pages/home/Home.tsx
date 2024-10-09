@@ -91,13 +91,13 @@ export const Home = () => {
     columnResizeMode: 'onChange',
     columnResizeDirection: 'rtl',
     filterFns: {
-      fuzzy: fuzzyFilter, //define as a filter function that can be used in column definitions
+      fuzzy: fuzzyFilter, // a filter function that can be used in column definitions
     },
     state: {
       columnFilters,
       globalFilter,
     },
-    globalFilterFn: 'fuzzy',
+    globalFilterFn: 'includesString',
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
