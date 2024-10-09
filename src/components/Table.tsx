@@ -7,7 +7,7 @@ import { CSSProperties } from 'react'
 import { ProductListItem } from '../@types/productList.mock.type'
 
 export const Table = ({ table }: TableProps) => {
-  const Units = ['گالن', 'کیلوگرم', 'عدد', 'بطری']
+  const Units = ['گالن', 'کیلوگرم', 'عدد', 'بطری', 'لیتر']
 
   const getCommonPinningStyles = (
     column: Column<ProductListItem>,

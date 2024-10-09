@@ -43,7 +43,7 @@ function Filter({
       value={columnFilterValue?.toString()}
       className='text-black rounded-sm'
     >
-      <option value=''>All</option>
+      <option value=''>همه</option>
       {Units.map((unit: any) => (
         <option value={unit}>{unit}</option>
       ))}
